@@ -1,9 +1,17 @@
-import React from "react";
+import React, { Component } from "react";
 import { List } from "./List";
 
-export const Welcome = ({ User, handleLogout }) => {
-  return (
-    <div>
+export default class Welcome extends Component {
+  state = {
+    Notes: ["Note 1", "Note 2", "Note 3"],
+    CurrentNote: null
+  };
+  setCurrentNote = CurrentNote => {
+    this.setState({ CurrentNote });
+  };
+  render() {
+    const { User, handleLogout } = this.props;
+    return (
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -17,11 +25,15 @@ export const Welcome = ({ User, handleLogout }) => {
         </div>
         <div className="row mt-3">
           <div className="col-3">
-            <List Notes={["Note1", "Note2", "Note3", "Note4"]}></List>
+            <List
+              Notes={this.state.Notes}
+              CurrentNote={this.state.CurrentNote}
+              setCurrentNote={this.setCurrentNote}
+            ></List>
           </div>
           <div className="col-9">Right Window</div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}

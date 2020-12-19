@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header/Header";
 import { Login } from "./Login/Login";
-import { Welcome } from "./Welcome/Welcome";
+import Welcome from "./Welcome/Welcome";
 
 export default class App extends Component {
   state = {
