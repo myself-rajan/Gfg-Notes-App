@@ -29,6 +29,10 @@ export default class App extends Component {
       this.setState({ User: { Name: username }, Error: null });
     }
   };
+  handleLogout = e => {
+    e.preventDefault();
+    this.setState({ User: null });
+  };
   render() {
     return (
       <div className="App">
@@ -36,7 +40,11 @@ export default class App extends Component {
           GfG Notes App
         </Header>
         {this.state.User ? (
-          <Welcome User={this.state.User} Error={this.state.Error} />
+          <Welcome
+            User={this.state.User}
+            Error={this.state.Error}
+            handleLogout={this.handleLogout}
+          />
         ) : (
           <Login handleAuth={this.handleAuth} Error={this.state.Error} />
         )}
