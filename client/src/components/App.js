@@ -36,9 +36,9 @@ export default class App extends Component {
           GfG Notes App
         </Header>
         {this.state.User ? (
-          <Welcome User={this.state.User} />
+          <Welcome User={this.state.User} Error={this.state.Error} />
         ) : (
-          <Login handleAuth={this.handleAuth} />
+          <Login handleAuth={this.handleAuth} Error={this.state.Error} />
         )}
       </div>
     );
