@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { List } from "./List";
-import { Note } from "./Note";
+import Note from "./Note";
 import { WelcomeHeader } from "./WelcomeHeader";
 
 export default class Welcome extends Component {
