@@ -36,13 +36,10 @@ const List = ({ Notes, match, User }) => {
           }
         }).map((note, key) => (
           <Link
-            to={"/note-" + key}
+            to={"/" + note.NoteID}
             className={
               "list-group-item list-group-item-action" +
-              (match.params.NoteID &&
-              +match.params.NoteID.replace("note-", "") === key
-                ? " active"
-                : "")
+              (note.NoteID === match.params.NoteID ? " active" : "")
             }
             key={key}
           >
