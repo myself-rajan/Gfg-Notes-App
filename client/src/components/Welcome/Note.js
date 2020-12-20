@@ -19,5 +19,5 @@ const Note = ({ CurrentNote, ...props }) => {
 export default withRouter(Note);
 
 /* CurrentNote != null
-    ? "You're looking at Note #" + CurrentNote
-    : "Click on a note from left side"; */
+? "You're looking at Note #" + CurrentNote
+: "Click on a note from left side"; */

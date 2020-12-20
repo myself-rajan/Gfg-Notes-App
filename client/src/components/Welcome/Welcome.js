@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { List } from "./List";
+import List from "./List";
 import Note from "./Note";
 import { WelcomeHeader } from "./WelcomeHeader";
 
