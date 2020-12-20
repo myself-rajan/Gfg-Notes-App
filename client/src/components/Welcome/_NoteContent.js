@@ -1,6 +1,9 @@
 import React from "react";
 
 const NoteContent = ({ match, Notes }) => {
+  if (Notes.length === 0) {
+    return "Loading...";
+  }
   const { Title, Desc } = Notes[+match.params.NoteID.replace("note-", "")];
   return (
     <>
