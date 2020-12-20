@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
+import { GetNotes } from "../../services/Notes";
 import List from "./List";
 import Note from "./Note";
 import { WelcomeHeader } from "./WelcomeHeader";
@@ -33,6 +34,13 @@ export default class Welcome extends Component {
   // setCurrentNote = CurrentNote => {
   //   this.setState({ CurrentNote });
   // };
+  componentDidMount() {
+    GetNotes().then(res => {
+      this.setState({
+        Notes: res.data
+      });
+    });
+  }
   render() {
     const { User, handleLogout } = this.props;
     return (
