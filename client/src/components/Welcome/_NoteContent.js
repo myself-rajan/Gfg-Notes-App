@@ -2,7 +2,21 @@ import React from "react";
 
 const NoteContent = ({ match, Notes }) => {
   if (Notes.length === 0) {
-    return "Loading...";
+    return (
+      <>
+        <h3 className="mb-3">Loading...</h3>
+        <p>Please Wait...</p>
+      </>
+    );
+  }
+  const Note = Notes[+match.params.NoteID.replace("note-", "")];
+  if (!Note) {
+    return (
+      <>
+        <h3 className="mb-3">Note Not Found</h3>
+        <p>Whoops! The Note you're looking for is not found!</p>
+      </>
+    );
   }
   const { Title, Desc } = Notes[+match.params.NoteID.replace("note-", "")];
   return (
