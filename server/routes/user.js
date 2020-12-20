@@ -44,6 +44,9 @@ user.post("/login", (req, res) => {
   } else {
     // Password is right!
     //this.setState({ User: { Name: username }, Error: null });
+    req.session.User = {
+      Name: username
+    };
     res.json({
       Error: false,
       Success: true,
