@@ -20,11 +20,17 @@ const NoteContent = ({ match, Notes }) => {
       </>
     );
   }
-  const { Title, Desc } = Note;
+  const { NoteID, Title, Desc, User } = Note;
   // Notes[+match.params.NoteID.replace("note-", "")]
   return (
     <>
-      <h3 className="mb-3">{Title}</h3>
+      <h3 className="mb-3">
+        {Title}
+        <code> ({NoteID})</code>
+      </h3>
+      <p>
+        <em>Created by {User}.</em>
+      </p>
       <p>{Desc}</p>
     </>
   );
