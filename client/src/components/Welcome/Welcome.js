@@ -44,7 +44,7 @@ export default class Welcome extends Component {
               <List Notes={this.state.Notes}></List>
             </div>
             <div className="col-9">
-              <Note></Note>
+              <Note Notes={this.state.Notes}></Note>
             </div>
           </Route>
         </div>

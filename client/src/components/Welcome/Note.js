@@ -1,18 +1,17 @@
 import React from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
+import NoteContent from "./_NoteContent";
+import NoteWelcome from "./_NoteWelcome";
 
-const Note = ({ match }) => {
+const Note = ({ match, Notes }) => {
   return (
-    <switch>
-      <Route path="/" exact={true}>
-        Select Something from left
-      </Route>
-      <Route path="/:NoteID">
-        <pre className="border rounded p-1 bg-light">
-          {JSON.stringify(match, null, 2)}
-        </pre>
-      </Route>
-    </switch>
+    <Switch>
+      <Route path="/" exact={true} component={NoteWelcome} />
+      <Route
+        path="/:NoteID"
+        render={rp => <NoteContent {...rp} Notes={Notes} />}
+      />
+    </Switch>
   );
 };
 
@@ -22,4 +21,9 @@ export default withRouter(Note);
 ? "You're looking at Note #" + CurrentNote
 : "Click on a note from left side";
 
-{ CurrentNote, ...props }*/
+{ CurrentNote, ...props }
+
+
+<pre className="border rounded p-1 bg-light">
+  {JSON.stringify(match, null, 2)}
+</pre>*/
