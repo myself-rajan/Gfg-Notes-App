@@ -6,7 +6,7 @@ import { WelcomeHeader } from "./WelcomeHeader";
 
 export default class Welcome extends Component {
   state = {
-    Notes: [
+    Notes: [] /* [
       {
         NoteID: "hello",
         Title: "Hello World",
@@ -27,7 +27,7 @@ export default class Welcome extends Component {
         Title: "Suggestion",
         Desc: "Hello World Hello World Hello world Hello World"
       }
-    ]
+    ] */
     //CurrentNote: null
   };
   // setCurrentNote = CurrentNote => {
