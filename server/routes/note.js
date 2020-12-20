@@ -24,6 +24,12 @@ const Notes = [
     Title: "Suggestion",
     Desc: "Hello World Hello World Hello world Hello World",
     User: "Rajan"
+  },
+  {
+    NoteID: "Follows",
+    Title: "Follow",
+    Desc: "Hello World Hello World Hello world Hello World",
+    User: "New User"
   }
 ];
 
