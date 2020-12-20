@@ -53,5 +53,21 @@ user.post("/login", (req, res) => {
     });
   }
 });
-
+user.post("/register", (req, res) => {
+  const { username, password } = req.body;
+  if (!Users[username]) {
+    Users[username] = password;
+    res.json(201).json({
+      Error: false,
+      Success: true,
+      Message: "Created User " + username + "."
+    });
+  } else {
+    res.status(409).json({
+      Error: true,
+      Success: false,
+      Message: "User " + username + "already exists."
+    });
+  }
+});
 module.exports = user;
