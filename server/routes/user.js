@@ -12,7 +12,15 @@ const Users = {
 };
 
 user.get("/", (req, res) => {
-  res.json(req.session.User);
+  if (!!req.session.User) {
+    res.json(req.session.User);
+  } else {
+    res.status(401).json({
+      Error: true,
+      Success: false,
+      Message: "Not Logged In!"
+    });
+  }
 });
 user.post("/login", (req, res) => {
   const { username, password } = req.body;
@@ -46,4 +54,4 @@ user.post("/login", (req, res) => {
   }
 });
 
-module.exports = app;
+module.exports = user;
