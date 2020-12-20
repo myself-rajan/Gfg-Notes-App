@@ -20,14 +20,10 @@ export default class Welcome extends Component {
         <div className="row mt-3">
           <Route path={["/:NoteID", "/"]}>
             <div className="col-3">
-              <List
-                Notes={this.state.Notes}
-                CurrentNote={this.state.CurrentNote}
-                setCurrentNote={this.setCurrentNote}
-              ></List>
+              <List Notes={this.state.Notes}></List>
             </div>
             <div className="col-9">
-              <Note CurrentNote={this.state.CurrentNote}></Note>
+              <Note></Note>
             </div>
           </Route>
         </div>
@@ -35,3 +31,8 @@ export default class Welcome extends Component {
     );
   }
 }
+
+//CurrentNote={this.state.CurrentNote} //List
+//setCurrentNote={this.setCurrentNote} //List
+
+//CurrentNote={this.state.CurrentNote} //Note
