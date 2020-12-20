@@ -2,6 +2,7 @@ import React from "react";
 
 const NoteContent = ({ match, Notes }) => {
   if (Notes.length === 0) {
+    //Assuming that on AJAX call is done.
     return (
       <>
         <h3 className="mb-3">Loading...</h3>
