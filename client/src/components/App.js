@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+
+import Socket from "./Socket/Socket";
+
 import { AuthUser, CheckUser, LogoutUser } from "../services/User";
 import Header from "./Header/Header";
 import { Login } from "./Login/Login";
@@ -72,6 +75,7 @@ export default class App extends Component {
         ) : (
           <Login handleAuth={this.handleAuth} Error={this.state.Error} />
         )}
+        <Socket />
       </div>
     );
   }
