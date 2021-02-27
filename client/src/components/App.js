@@ -75,7 +75,7 @@ export default class App extends Component {
         ) : (
           <Login handleAuth={this.handleAuth} Error={this.state.Error} />
         )}
-        <Socket />
+        {/* <Socket /> */}
       </div>
     );
   }
