@@ -1,4 +1,5 @@
 import React from "react";
+import MEDitor from "@uiw/react-md-editor";
 
 const NoteContent = ({ match, Notes }) => {
   if (Notes.length === 0) {
@@ -10,7 +11,7 @@ const NoteContent = ({ match, Notes }) => {
       </>
     );
   }
-  const Note = Notes.find(n => n.NoteID === match.params.NoteID);
+  const Note = Notes.find(n => n.note_id === match.params.NoteID);
   /* // +match.params.NoteID.replace("note-", "") */
   if (!Note) {
     return (
@@ -20,18 +21,18 @@ const NoteContent = ({ match, Notes }) => {
       </>
     );
   }
-  const { NoteID, Title, Desc, User } = Note;
+  const { note_id, title, desc, user } = Note;
   // Notes[+match.params.NoteID.replace("note-", "")]
   return (
     <>
       <h3 className="mb-3">
-        {Title}
-        <code> ({NoteID})</code>
+        {title}
+        <code> ({note_id})</code>
       </h3>
       <p>
-        <em>Created by {User}.</em>
+        <em>Created by {user}.</em>
       </p>
-      <p>{Desc}</p>
+      <MEDitor.Markdown source={desc} />
     </>
   );
 };
