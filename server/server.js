@@ -2,6 +2,32 @@ const express = require("express");
 const morgan = require("morgan");
 const session = require("express-session");
 
+//NODEMAILER
+// var nodeMailer = require("nodemailer");
+// var transport = nodeMailer.createTransport({
+//   host: "smtp.gmail.com",
+//   port: 587,
+//   secure: false,
+//   reqireTLS: true,
+//   auth: {
+//     user: "rksucan@gmail.com",
+//     pass: ""
+//   }
+// });
+// var mailOptions = {
+//   from: "rksucan@gmail.com",
+//   to: "rksucan@gmail.com",
+//   subject: "test nodemailer",
+//   text: "Hello mail"
+// };
+// transport.sendMail(mailOptions, function (error, info) {
+//   if (error) {
+//     console.warn(error);
+//   } else {
+//     console.warn("email has been sent", info.response);
+//   }
+// });
+
 //SOCKET.IO
 const socketio = require("socket.io");
 const http = require("http");
@@ -58,11 +84,15 @@ app.use(
 // Configuring the database
 const dbConfig = require("./config/db.config.js");
 const mongoose = require("mongoose");
-mongoose.Promise = global.Promise;
+//mongoose.Promise = global.Promise;
+
+// User Model
+const User = require("./models/user.model.js");
 // Connecting to the database
 mongoose
   .connect(dbConfig.url, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
   })
   .then(() => {
     console.log("Successfully connected to the database");
@@ -71,6 +101,24 @@ mongoose
     console.log("Could not connect to the database.", err);
     process.exit();
   });
+
+User.find({}, function (err, users) {
+  if (err) console.warn(err);
+  console.warn(users);
+});
+
+const data = new User({
+  _id: new mongoose.Types.ObjectId(),
+  name: "add",
+  email: "add@gmail.com",
+  address: "mail address"
+});
+data
+  .save()
+  .then(result => {
+    console.warn(result);
+  })
+  .catch(err => console.warn(err));
 
 app.use("/api", api); // This is the Route handler
 app.get("/", (req, res) => {
