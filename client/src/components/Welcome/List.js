@@ -36,14 +36,14 @@ const List = ({ Notes, match, User }) => {
           }
         }).map((note, key) => (
           <Link
-            to={"/" + note.NoteID}
+            to={"/" + note.note_id}
             className={
               "list-group-item list-group-item-action" +
-              (note.NoteID === match.params.NoteID ? " active" : "")
+              (note.note_id === match.params.NoteID ? " active" : "")
             }
             key={key}
           >
-            {note.Title}
+            {note.title}
           </Link>
         ))}
         {Notes.length === 0 && (

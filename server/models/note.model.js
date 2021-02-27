@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 
 const noteSchema = mongoose.Schema({
-  NoteID: String,
-  Title: String,
-  Desc: String
+  _id: mongoose.Schema.Types.ObjectId,
+  note_id: String,
+  title: String,
+  desc: String
 });
 
-module.exports = mongoose.model("Note", noteSchema);
+module.exports = mongoose.model("notes", noteSchema);

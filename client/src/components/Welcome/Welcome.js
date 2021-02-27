@@ -44,7 +44,7 @@ export default class Welcome extends Component {
   render() {
     const { User, handleLogout } = this.props;
     return (
-      <div className="container">
+      <div className="col-12">
         <WelcomeHeader User={User} handleLogout={handleLogout}></WelcomeHeader>
         <div className="row mt-3">
           <Route path={["/:NoteID", "/"]}>

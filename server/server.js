@@ -88,6 +88,8 @@ const mongoose = require("mongoose");
 
 // User Model
 const User = require("./models/user.model.js");
+const Note = require("./models/note.model.js");
+
 // Connecting to the database
 mongoose
   .connect(dbConfig.url, {
@@ -104,7 +106,7 @@ mongoose
 
 User.find({}, function (err, users) {
   if (err) console.warn(err);
-  console.warn(users);
+  //console.warn(users);
 });
 
 const data = new User({
@@ -116,9 +118,22 @@ const data = new User({
 data
   .save()
   .then(result => {
-    console.warn(result);
+    //console.warn(result);
   })
   .catch(err => console.warn(err));
+
+/* const noteData = new Note({
+  _id: new mongoose.Types.ObjectId(),
+  note_id: "Note Data",
+  title: "Note Title",
+  desc: "Description"
+});
+noteData
+  .save()
+  .then(result => {
+    console.warn(result);
+  })
+  .catch(err => console.warn(err)); */
 
 app.use("/api", api); // This is the Route handler
 app.get("/", (req, res) => {
