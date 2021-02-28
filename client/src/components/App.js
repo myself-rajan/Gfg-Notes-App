@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Socket from "./Socket/Socket";
+//import Socket from "./Socket/Socket";
 
 import { AuthUser, CheckUser, LogoutUser } from "../services/User";
 import Header from "./Header/Header";
