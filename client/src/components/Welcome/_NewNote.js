@@ -7,8 +7,16 @@ const NewNote = ({ User }) => {
   const [Desc, setDesc] = useState("");
   const [Title, setTitle] = useState("");
   const NoteID = Sluggify(Title);
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log({ NoteID, Desc, Title, User });
+  };
+  const handleReset = () => {
+    setDesc("");
+    setTitle("");
+  };
   return (
-    <div className="NewNote">
+    <form className="NewNote" onSubmit={handleSubmit} onReset={handleReset}>
       <h3 className="mb-3">
         Creating
         <input
@@ -25,7 +33,17 @@ const NewNote = ({ User }) => {
       <pre className="mt-3.border rounded bg-light">
         {JSON.stringify({ NoteID, Desc, Title, User }, null, 2)}
       </pre>
-    </div>
+      <input
+        type="submit"
+        className="btn btn-primary mt-3"
+        value="Create Note"
+      />
+      <input
+        type="reset"
+        className="btn btn-outline-primary mt-3 ml-3"
+        value="Reset"
+      />
+    </form>
   );
 };
 
