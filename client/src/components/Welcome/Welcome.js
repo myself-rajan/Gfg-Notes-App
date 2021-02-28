@@ -34,12 +34,15 @@ export default class Welcome extends Component {
   // setCurrentNote = CurrentNote => {
   //   this.setState({ CurrentNote });
   // };
-  componentDidMount() {
+  RefreshNotes = () => {
     GetNotes().then(res => {
       this.setState({
         Notes: res.data
       });
     });
+  };
+  componentDidMount() {
+    this.RefreshNotes();
   }
   render() {
     const { User, handleLogout } = this.props;
@@ -52,7 +55,11 @@ export default class Welcome extends Component {
               <List Notes={this.state.Notes} User={User}></List>
             </div>
             <div className="col-9">
-              <Note Notes={this.state.Notes} User={User}></Note>
+              <Note
+                Notes={this.state.Notes}
+                User={User}
+                RefreshNotes={this.RefreshNotes}
+              ></Note>
             </div>
           </Route>
         </div>

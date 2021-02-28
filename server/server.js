@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const session = require("express-session");
-
+// const { MONGOURI } = require("./config/keys");
 //NODEMAILER
 // var nodeMailer = require("nodemailer");
 // var transport = nodeMailer.createTransport({
@@ -68,7 +68,7 @@ io.on("connection", socket => {
 });
 
 const api = require("./routes/api");
-const port = 3100;
+const port = process.env.PORT | 3100;
 
 app.use(express.json());
 app.use(morgan("dev"));
@@ -140,6 +140,13 @@ app.get("/", (req, res) => {
   res.json("Welcome to API Server!");
 });
 
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static("client/build"));
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(_dirname, "client", "build", "index.html"));
+  });
+}
 server.listen(port, () => {
   console.log(`Server started in port ${port}!`);
 });

@@ -40,9 +40,9 @@ const noteController = require("../controllers/note.controllers");
 
 note.get("/", noteController.findAll);
 
-note.post("/", (req, res) => {
-  const { NoteId, Title, DESC, User } = req.body;
-  if (Notes.find(n => n.NoteID === NoteId)) {
+note.post("/create", (req, res) => {
+  const { NoteID, Title, Desc, User } = req.body;
+  /* if (Notes.find(n => n.NoteID === NoteId)) {
     re.status(409).json({
       Error: true,
       Success: false,
@@ -56,8 +56,14 @@ note.post("/", (req, res) => {
       Success: true,
       Message: `Note ${Title} created successfully`
     });
-  }
-  res.json({ NoteId, Title, DESC, User });
+  } */
+  note.post("/create", noteController.create);
+  res.status(201).json({
+    Error: false,
+    Success: true,
+    Message: `Note ${Title} created successfully`
+  });
+  //res.json({ NoteID, Title, Desc, User });
 });
 
 module.exports = note;

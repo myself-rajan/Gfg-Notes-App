@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import MEditor from "@uiw/react-md-editor";
 import { Sluggify } from "../Helpers/Helpers.js";
+import { CreateNote } from "../../services/Notes.js";
 
-const NewNote = ({ User }) => {
+const NewNote = ({ User, RefreshNotes }) => {
   User = User.Name;
   const [Desc, setDesc] = useState("");
   const [Title, setTitle] = useState("");
@@ -10,6 +11,9 @@ const NewNote = ({ User }) => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log({ NoteID, Desc, Title, User });
+    CreateNote(NoteID, Desc, Title, User).then(() => {
+      RefreshNotes();
+    });
   };
   const handleReset = () => {
     setDesc("");
